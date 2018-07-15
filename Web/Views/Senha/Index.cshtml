@@ -1,0 +1,33 @@
+﻿@model SenhaViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <h3><strong>AVALIADOR DE SEGURANÇA DE SENHA</strong></h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @using (Html.BeginForm("Index", "Senha", FormMethod.Post, new { @id = "form-senha" }))
+                {
+                    <div class="form-group">
+                        @Html.TextBoxFor(vm => vm.Valor, new { @type = "password", @class = "form-control", @placeholder = "Senha", @id = "input-senha-valor" })
+                        <span id="span-senha-score" class="label label-default">@Model.Score %</span>
+                        <span id="span-senha-complexidade" class="label label-danger">@Model.Complexidade</span>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="input-senha-exibir">Exibir / Ocultar a senha
+                            </label>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/web/senha")
